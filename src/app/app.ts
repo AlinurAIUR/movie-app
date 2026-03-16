@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import {Header} from './header/header';
+import { MainComponent} from './main/main';
+import {FavoritesComponent} from './favorites/favorites';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  imports: [Header, MainComponent, FavoritesComponent],
+  styleUrls: ['./app.css'],
 })
-export class AppComponent {
-  title = 'Мой Angular проект';
-}
+export class AppComponent {}
