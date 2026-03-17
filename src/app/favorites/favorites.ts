@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FavoritesService} from '../services/favorites';
+import {FavoritesService} from '../services/favorites.service';
 
 @Component({
   selector: 'app-favorites',

@@ -2,7 +2,7 @@ import {Component, OnInit, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Environment } from '../data/environments/environment';
 import {CommonModule} from '@angular/common';
-import {FavoritesService} from '../services/favorites';
+import {FavoritesService} from '../services/favorites.service';
 
 @Component({
   selector: 'app-main',
