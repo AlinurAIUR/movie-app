@@ -6,7 +6,7 @@
 }
 
 .movie-card {
-  background: #ffffff;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
@@ -41,7 +41,7 @@
 #addToFavoritesButton {
   margin: 12px 0 16px;
   padding: 8px 14px;
-  background: #ffcc00;
+  background:#ffcc00;
   border: none;
   border-radius: 6px;
   color: #333;
@@ -53,3 +53,76 @@
 #addToFavoritesButton:hover {
   background: #e6b800;
 }
+/* Пагинация */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 30px 0 20px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #ffcc00;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #e6b800;
+  transform: translateY(-2px);
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 250px;
+}
+
+.search-bar button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #ffcc00;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-bar button:hover {
+  background: #e6b800;
+}
+
+

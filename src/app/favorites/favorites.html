@@ -1,4 +1,6 @@
-<h2>Your Favourite movies</h2>
+<h2 *ngIf="favoritesService.favorites().length === 0">
+  Your favourite movies will be presented here
+</h2>
 
 <div class="movies-grid">
 
