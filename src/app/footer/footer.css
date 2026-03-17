@@ -1,9 +1,9 @@
 .app-footer {
   background: linear-gradient(135deg, #f9f9f9, #ffffff);
-  border-top: 1px solid #ddd;
+
   box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
   padding: 40px 20px;
-  margin-top: 50px;
+
   font-family: 'Roboto', Arial, sans-serif;
 }
 

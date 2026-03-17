@@ -18,7 +18,18 @@ export class MainComponent implements OnInit {
   currentPage = signal<number>(1);
   totalPages = signal<number>(1);
   searchQuery = signal<string>('');
-  isSearching = signal<boolean>(false); // флаг поиска
+  isSearching = signal<boolean>(false);
+
+  genres = [
+    { id: 28, name: 'Боевик' },
+    { id: 35, name: 'Комедия' },
+    { id: 18, name: 'Драма' },
+    { id: 27, name: 'Ужасы' },
+    { id: 10749, name: 'Мелодрама' },
+    { id: 878, name: 'Фантастика' }
+  ];
+
+  selectedGenre: number | null = null;
 
   constructor(
       private http: HttpClient,
@@ -72,5 +83,16 @@ export class MainComponent implements OnInit {
 
   addToFavorites(movie: any) {
     this.favoritesService.add(movie);
+  }
+
+  filterByGenre(genreId: number | null) {
+    this.selectedGenre = genreId;
+  }
+
+  filteredMovies() {
+    if (!this.selectedGenre) {
+      return this.movies();
+    }
+    return this.movies().filter(movie => movie.genre_ids.includes(this.selectedGenre));
   }
 }

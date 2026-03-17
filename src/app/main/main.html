@@ -1,24 +1,43 @@
-<div class="search-bar">
-    <input type="text" [(ngModel)]="searchQuery" placeholder="Поиск фильма..." />
-    <button (click)="searchMovies()">🔍 Найти</button>
-</div>
+<div class="layout">
 
-<div class="movies-grid">
-    <div class="movie-card" *ngFor="let movie of movies()">
-        <img
-                [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-                [alt]="movie.title"
-                class="poster"
-        />
-        <h3>{{ movie.title }}</h3>
-        <p>Дата выхода: {{ movie.release_date }}</p>
-        <p>Рейтинг: {{ movie.vote_average }}</p>
-        <button (click)="addToFavorites(movie)" id="addToFavoritesButton">⭐ В избранное</button>
-    </div>
-</div>
+    <aside class="sidebar">
+        <h3>Жанры</h3>
+        <ul>
+            <li (click)="filterByGenre(null)" [class.active]="selectedGenre === null">
+                Все жанры
+            </li>
+            <li *ngFor="let genre of genres"
+                (click)="filterByGenre(genre.id)"
+                [class.active]="selectedGenre === genre.id">
+                {{ genre.name }}
+            </li>
+        </ul>
+    </aside>
 
-<div class="pagination">
-    <button (click)="prevPage()" [disabled]="currentPage() === 1">Назад</button>
-    <span>Страница {{ currentPage() }} из {{ totalPages() }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">Вперёд</button>
+    <main class="content">
+        <div class="search-bar">
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Поиск фильма..." />
+            <button (click)="searchMovies()">🔍 Найти</button>
+        </div>
+
+        <div class="movies-grid">
+            <div class="movie-card" *ngFor="let movie of filteredMovies()">
+                <img
+                        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+                        [alt]="movie.title"
+                        class="poster"
+                />
+                <h3>{{ movie.title }}</h3>
+                <p>Дата выхода: {{ movie.release_date }}</p>
+                <p>Рейтинг: {{ movie.vote_average }}</p>
+                <button (click)="addToFavorites(movie)">⭐ В избранное</button>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button (click)="prevPage()" [disabled]="currentPage() === 1">Назад</button>
+            <span>Страница {{ currentPage() }} из {{ totalPages() }}</span>
+            <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">Вперёд</button>
+        </div>
+    </main>
 </div>
