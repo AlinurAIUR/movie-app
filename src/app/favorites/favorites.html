@@ -1,23 +1,22 @@
-<h2 *ngIf="favoritesService.favorites().length === 0">
-  Your favourite movies will be presented here
-</h2>
-
 <div class="movies-grid">
 
-  <div class="movie-card" *ngFor="let movie of favoritesService.favorites()">
+  <div
+    class="movie-card"
+    *ngFor="let movie of favoritesService.favorites()"
+    (click)="openMovie(movie)">
 
     <img
       [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
       [alt]="movie.title"
     />
 
-    <h3>{{ movie.title }}</h3>
+    <h3>{{ movie.title || movie.name }}</h3>
 
-    <p>Дата выхода: {{ movie.release_date }}</p>
+    <p>Дата выхода: {{ movie.release_date || movie.first_air_date }}</p>
 
     <p>Рейтинг: {{ movie.vote_average }}</p>
 
-    <button (click)="favoritesService.remove(movie)">
+    <button (click)="remove(movie, $event)">
       ❌ Удалить
     </button>
 

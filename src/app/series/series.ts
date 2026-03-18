@@ -4,11 +4,12 @@ import { Environment } from '../data/environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FavoritesService } from '../services/favorites.service';
+import {RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-series',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './series.html',
   styleUrls: ['./series.css'],
 })
@@ -69,8 +70,9 @@ export class SeriesComponent implements OnInit {
       this.isSearching() ? this.searchSeries() : this.loadSeries();
     }
   }
-
-  addToFavorites(show: any) {
+  addToFavorites(show: any, event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
     this.favoritesService.add(show);
   }
 }

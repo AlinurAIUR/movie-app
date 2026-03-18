@@ -4,17 +4,29 @@
 </div>
 
 <div class="series-grid">
-  <div class="series-card" *ngFor="let show of series()">
+  <a class="series-card"
+     *ngFor="let show of series()"
+     [routerLink]="['/movie', show.id,'tv']">
+
     <img
       [src]="'https://image.tmdb.org/t/p/w500' + show.poster_path"
       [alt]="show.name"
       class="poster"
     />
+
     <h3>{{ show.name }}</h3>
+
     <p>Дата выхода: {{ show.first_air_date }}</p>
+
     <p>Рейтинг: {{ show.vote_average }}</p>
-    <button class="addToFavoritesButton" (click)="addToFavorites(show)">⭐ В избранное</button>
-  </div>
+
+    <button
+      class="addToFavoritesButton"
+      (click)="addToFavorites(show, $event)">
+      ⭐ В избранное
+    </button>
+
+  </a>
 </div>
 
 <div class="pagination">

@@ -1,0 +1,24 @@
+<div *ngIf="movie() as m; else loading" class="movie-details">
+
+  <h2>{{ m.title }}</h2>
+
+  <img
+    [src]="'https://image.tmdb.org/t/p/w500' + m.poster_path"
+    [alt]="m.title"
+  />
+
+  <p><strong>Дата выхода:</strong> {{ m.release_date }}</p>
+
+  <p><strong>Рейтинг:</strong> {{ m.vote_average }}</p>
+
+  <p><strong>Описание:</strong> {{ m.overview }}</p>
+
+  <button (click)="goBack()" class="back-button">
+    ⬅ Назад
+  </button>
+
+</div>
+
+<ng-template #loading>
+  <p>Загрузка...</p>
+</ng-template>

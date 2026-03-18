@@ -21,7 +21,10 @@
         </div>
 
         <div class="movies-grid">
-            <div class="movie-card" *ngFor="let movie of filteredMovies()">
+
+            <a class="movie-card"
+               *ngFor="let movie of filteredMovies()"
+               [routerLink]="['/movie', movie.id,'movie']">
                 <img
                         [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
                         [alt]="movie.title"
@@ -30,8 +33,12 @@
                 <h3>{{ movie.title }}</h3>
                 <p>Дата выхода: {{ movie.release_date }}</p>
                 <p>Рейтинг: {{ movie.vote_average }}</p>
-                <button (click)="addToFavorites(movie)">⭐ В избранное</button>
-            </div>
+              <button
+                class="addToFavoritesButton"
+                (click)="addToFavorites(movie, $event)">
+                ⭐ В избранное
+              </button>
+            </a>
         </div>
 
         <div class="pagination">

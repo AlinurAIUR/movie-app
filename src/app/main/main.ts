@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Environment } from '../data/environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';   // 🔹 добавлено для routerLink
 import { FavoritesService } from '../services/favorites.service';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule], // 🔹 MovieCardComponent убран, RouterModule добавлен
   templateUrl: './main.html',
   styleUrls: ['./main.css'],
 })
@@ -81,10 +82,6 @@ export class MainComponent implements OnInit {
     }
   }
 
-  addToFavorites(movie: any) {
-    this.favoritesService.add(movie);
-  }
-
   filterByGenre(genreId: number | null) {
     this.selectedGenre = genreId;
   }
@@ -94,5 +91,10 @@ export class MainComponent implements OnInit {
       return this.movies();
     }
     return this.movies().filter(movie => movie.genre_ids.includes(this.selectedGenre));
+  }
+  addToFavorites(show: any, event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.favoritesService.add(show);
   }
 }
